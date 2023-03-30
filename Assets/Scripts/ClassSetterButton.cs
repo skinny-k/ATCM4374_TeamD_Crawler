@@ -17,6 +17,7 @@ public class ClassSetterButton : MonoBehaviour
 
     // a helper function to invoke events with complex types (in this case Quest.QuestType),
     // since UnityEvents ordinarily only support booleans, numerical types and strings as input
+    
     public void OnClick()
     {
         if (randomizeClass)

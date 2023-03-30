@@ -37,6 +37,7 @@ public class Class : MonoBehaviour
     public void SetClass(Quest.QuestType type)
     {
         _bonusQuestType = type;
+        Debug.Log(_bonusQuestType);
 
         DisableClassInput();
     }
@@ -57,6 +58,7 @@ public class Class : MonoBehaviour
             }
         }
         _bonusQuestType = questTypes[Random.Range(0, questTypes.Count)];
+        Debug.Log(_bonusQuestType);
 
         DisableClassInput();
     }
