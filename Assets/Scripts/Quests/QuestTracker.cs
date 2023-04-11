@@ -11,10 +11,6 @@ public class QuestTracker : MonoBehaviour
     public static event Action<Quest> OnCollectQuest;
 
     [SerializeField] QuestGenerator _questGenerator;
-
-    [Header("Debug Settings")]
-    [SerializeField] TMP_Text _scoreText;
-    [SerializeField] TMP_Text _questCountText;
     
     public int Score { get; private set; } = 0;
     public int TotalQuestCount { get; private set; } = 0;
@@ -61,17 +57,6 @@ public class QuestTracker : MonoBehaviour
             // increment score and total quest count
             Score += CalculateScore(quest);
             OnCollectQuest?.Invoke(quest);
-
-            // udpate debug text
-            Debug.Log(quest.ToString());
-
-            _scoreText.text = "Total Score: " + Score;
-            string formattedCounts = "";
-            foreach (KeyValuePair<Quest.QuestType, List<Quest>> quests in CollectedQuests)
-            {
-                formattedCounts += quests.Key + ":\t" + (quests.Value.Count - 1) + "\n";
-            }
-            _questCountText.text = formattedCounts;
         }
     }
 

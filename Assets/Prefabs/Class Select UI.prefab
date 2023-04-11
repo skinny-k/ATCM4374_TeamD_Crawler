@@ -710,7 +710,7 @@ GameObject:
   - component: {fileID: 4714187685580962110}
   - component: {fileID: 5931362431041233350}
   m_Layer: 5
-  m_Name: Bear Button
+  m_Name: Cat Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1431,7 +1431,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Bear
+  m_text: 'Cat
 
     (+Meat)'
   m_isRightToLeft: 0

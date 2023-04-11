@@ -39,21 +39,30 @@ public class TouchManager : MonoBehaviour
     {
         OnFingerMove?.Invoke(finger.screenPosition);
         
-        UpdateDebug(finger, Color.green);
+        if (_debugInput != null)
+        {
+            UpdateDebug(finger, Color.green);
+        }
     }
 
     void FingerDown(Finger finger)
     {
         OnFingerDown?.Invoke(finger.screenPosition);
 
-        UpdateDebug(finger, Color.white);
+        if (_debugInput != null)
+        {
+            UpdateDebug(finger, Color.white);
+        }
     }
 
     void FingerUp(Finger finger)
     {
         OnFingerUp?.Invoke();
 
-        UpdateDebug(finger, Color.white);
+        if (_debugInput != null)
+        {
+            UpdateDebug(finger, Color.white);
+        }
     }
 
     void UpdateDebug(Finger finger, Color color)
