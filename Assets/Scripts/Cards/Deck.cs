@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class Deck : MonoBehaviour
 {
@@ -11,6 +13,8 @@ public class Deck : MonoBehaviour
     [SerializeField] CardObject _cardPrefab;
 
     Queue<CardData> _deck = new Queue<CardData>();
+
+    public static event Action<CardObject> OnDraw;
 
     void Start()
     {
@@ -43,6 +47,8 @@ public class Deck : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
+
+        OnDraw?.Invoke(draw);
     }
 
     public void EnableDraw(bool state)

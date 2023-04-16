@@ -9,45 +9,55 @@ public class CardHand : MonoBehaviour
     [SerializeField] GameObject _showButton;
     [SerializeField] GameObject _hideButton;
 
-    public bool Visible { get; private set; } = false;
+    public List<CardObject> Cards = new List<CardObject>();
+    public bool Shown { get; private set; } = false;
+    public bool VisualsHidden { get; private set; } = false;
 
-    List<CardObject> _cards = new List<CardObject>();
-
-    public void EnableHand(bool state)
+    void OnEnable()
     {
-        _showButton.SetActive(state);
-        _hideButton.SetActive(false);
+        CardObject.OnPlay += OnCardPlayed;
+    }
+
+    void OnDisable()
+    {
+        CardObject.OnPlay -= OnCardPlayed;
     }
     
     public void ShowHand(bool state)
     {
-        Visible = state;
-        foreach (CardObject card in _cards)
+        Shown = state;
+        foreach (CardObject card in Cards)
         {
             card.RenderData(state);
         }
     }
 
+    public void EnableVisuals(bool state)
+    {
+        VisualsHidden = state;
+        _cardVisuals.SetActive(VisualsHidden);
+    }
+
     public void AddCard(CardObject card)
     {
-        _cards.Add(card);
-        card.OnPlay += PlayCard;
+        Cards.Add(card);
 
         RectTransform cardTransform = card.GetComponent<RectTransform>();
         cardTransform.SetParent(_cardVisuals.transform);
         cardTransform.localRotation = Quaternion.Euler(Vector3.zero);
-        cardTransform.anchoredPosition = _cardVisuals.GetComponent<RectTransform>().anchoredPosition + _distBetweenCards * (_cards.Count - 1);
+        cardTransform.anchoredPosition = _cardVisuals.GetComponent<RectTransform>().anchoredPosition + _distBetweenCards * (Cards.Count - 1);
     }
 
     public void RemoveCard(CardObject card)
     {
-        _cards.Remove(card);
-        card.OnPlay -= PlayCard;
+        Cards.Remove(card);
     }
 
-    public void PlayCard(CardObject card)
+    public void OnCardPlayed(CardObject card)
     {
-        RemoveCard(card);
-        Destroy(card.gameObject);
+        if (Cards.Contains(card))
+        {
+            RemoveCard(card);
+        }
     }
 }

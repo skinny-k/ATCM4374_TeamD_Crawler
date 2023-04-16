@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,8 @@ public class TurnManager : MonoBehaviour
     [SerializeField] int _players = 4;
     [SerializeField] List<CardHand> _playerHands = new List<CardHand>();
     int _turn = 0;
+
+    public static event Action OnEnd;
 
     void Start()
     {
@@ -22,8 +25,9 @@ public class TurnManager : MonoBehaviour
         }
 
         ForceHideHands();
-        ForceDisableHands();
-        _playerHands[0].EnableHand(true);
+        _playerHands[0].ShowHand(true);
+        // ForceDisableHands();
+        // _playerHands[0].EnableHand(true);
     }
 
     public CardHand CurrentPlayerHand()
@@ -48,8 +52,9 @@ public class TurnManager : MonoBehaviour
         }
 
         ForceHideHands();
-        ForceDisableHands();
-        _playerHands[_turn].EnableHand(true);
+        _playerHands[_turn].ShowHand(true);
+        // ForceDisableHands();
+        // _playerHands[_turn].EnableHand(true);
     }
 
     void ForceHideHands()
@@ -60,11 +65,18 @@ public class TurnManager : MonoBehaviour
         }
     }
     
+    /*
     void ForceDisableHands()
     {
         foreach(CardHand playerHand in _playerHands)
         {
             playerHand.EnableHand(false);
         }
+    }
+    */
+
+    void EndGame()
+    {
+        OnEnd?.Invoke();
     }
 }

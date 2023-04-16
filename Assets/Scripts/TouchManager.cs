@@ -1,17 +1,16 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.EnhancedTouch;
-using Random = UnityEngine.Random;
 using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
 
 public class TouchManager : MonoBehaviour
 {
-    [SerializeField] GameObject _debugInput;
+    [SerializeField] GameObject _debugSprite;
+
+    Vector2 _lastPos = Vector2.zero;
     
-    public static event Action<Vector2> OnFingerMove;
+    public static event Action<Vector2, Vector2> OnFingerMove;
     public static event Action<Vector2> OnFingerDown;
     public static event Action OnFingerUp;
 
@@ -37,44 +36,40 @@ public class TouchManager : MonoBehaviour
 
     void FingerMove(Finger finger)
     {
-        OnFingerMove?.Invoke(finger.screenPosition);
+        OnFingerMove?.Invoke(finger.screenPosition - _lastPos, finger.screenPosition);
+        _lastPos = finger.screenPosition;
         
-        if (_debugInput != null)
-        {
-            UpdateDebug(finger, Color.green);
-        }
+        UpdateDebug(finger, Color.green);
     }
 
     void FingerDown(Finger finger)
     {
         OnFingerDown?.Invoke(finger.screenPosition);
+        _lastPos = finger.screenPosition;
 
-        if (_debugInput != null)
-        {
-            UpdateDebug(finger, Color.white);
-        }
+        UpdateDebug(finger, Color.white);
     }
 
     void FingerUp(Finger finger)
     {
         OnFingerUp?.Invoke();
 
-        if (_debugInput != null)
-        {
-            UpdateDebug(finger, Color.white);
-        }
+        UpdateDebug(finger, Color.white);
     }
 
     void UpdateDebug(Finger finger, Color color)
     {
-        Vector3 worldPos = Camera.main.ScreenToWorldPoint(new Vector3(finger.screenPosition.x, finger.screenPosition.y, 18.5f));
-        worldPos.z = _debugInput.transform.position.z;
-
-        SpriteRenderer sprite = _debugInput.GetComponent<SpriteRenderer>();
-        if (sprite != null)
+        if (_debugSprite != null)
         {
-            sprite.color = color;
+            Vector3 worldPos = Camera.main.ScreenToWorldPoint(new Vector3(finger.screenPosition.x, finger.screenPosition.y, 18.5f));
+            worldPos.z = _debugSprite.transform.position.z;
+
+            SpriteRenderer sprite = _debugSprite.GetComponent<SpriteRenderer>();
+            if (sprite != null)
+            {
+                sprite.color = color;
+            }
+            _debugSprite.transform.position = worldPos;
         }
-        _debugInput.transform.position = worldPos;
     }
 }

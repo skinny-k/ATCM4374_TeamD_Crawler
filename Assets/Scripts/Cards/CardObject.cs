@@ -8,7 +8,7 @@ using Random = UnityEngine.Random;
 
 public class CardObject : MonoBehaviour
 {
-    public CardData MyCardData = null;
+    public CardData CurrentCardData = null;
     [SerializeField] TMP_Text _title;
     [SerializeField] TMP_Text _description;
     [SerializeField] GameObject _face;
@@ -16,16 +16,25 @@ public class CardObject : MonoBehaviour
 
     bool drawn = false;
 
-    public event Action<CardObject> OnPlay;
+    public static event Action<CardObject> OnDraw;
+    public static event Action<CardObject> OnPlay;
 
     void OnValidate()
     {
         RenderData(true);
     }
+
+    public void OnTapped()
+    {
+        if (drawn)
+        {
+            HandViewer.Instance.ViewHand();
+        }
+    }
     
     public void SetData(CardData newData)
     {
-        MyCardData = newData;
+        CurrentCardData = newData;
         RenderData(true);
     }
     
@@ -34,15 +43,12 @@ public class CardObject : MonoBehaviour
         _title.text = "";
         _description.text = "";
         _face.SetActive(state);
-        if (drawn)
-        {
-            _playButton.gameObject.SetActive(state);
-        }
+        GetComponent<Button>().enabled = state;
 
-        if (state)
+        if (state && CurrentCardData != null)
         {
-            _title.text = MyCardData.Title;
-            _description.text = MyCardData.Description;
+            _title.text = CurrentCardData.Title;
+            _description.text = CurrentCardData.Description;
         }
     }
 
@@ -50,12 +56,14 @@ public class CardObject : MonoBehaviour
     {
         TurnManager.Instance.CurrentPlayerHand().AddCard(this);
         Deck.Instance.EnableDraw(true);
+        RenderData(TurnManager.Instance.CurrentPlayerHand().Shown);
         drawn = true;
-        RenderData(TurnManager.Instance.CurrentPlayerHand().Visible);
+        OnDraw?.Invoke(this);
     }
 
     public void Play()
     {
         OnPlay?.Invoke(this);
+        Destroy(gameObject);
     }
 }
