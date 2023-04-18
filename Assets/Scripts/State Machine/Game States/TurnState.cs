@@ -34,6 +34,7 @@ public class TurnState : State
 
     protected override void SubscribeToInput()
     {
+        QuestManager.OnView += OnQuestViewOpened;
         HandViewer.OnView += OnHandViewed;
         SingleCardViewer.OnView += OnCardDrawn;
         TurnManager.OnEnd += OnGameEnded;
@@ -41,6 +42,7 @@ public class TurnState : State
 
     protected override void UnsubscribeToInput()
     {
+        QuestManager.OnView -= OnQuestViewOpened;
         HandViewer.OnView -= OnHandViewed;
         SingleCardViewer.OnView -= OnCardDrawn;
         TurnManager.OnEnd -= OnGameEnded;

@@ -33,7 +33,7 @@ public class HandViewer : MonoBehaviour
     public void ViewHand()
     {
         _index = 0f;
-        _currentHand = TurnManager.Instance.CurrentPlayerHand();
+        _currentHand = TurnManager.Instance.CurrentPlayer().Hand;
         _currentHand.EnableVisuals(false);
         _scrollBody.anchoredPosition = Vector2.zero;
         DisplayCards();

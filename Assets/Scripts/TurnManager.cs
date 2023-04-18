@@ -7,8 +7,7 @@ public class TurnManager : MonoBehaviour
 {
     public static TurnManager Instance;
 
-    [SerializeField] int _players = 4;
-    [SerializeField] List<CardHand> _playerHands = new List<CardHand>();
+    [SerializeField] List<Player> _players = new List<Player>();
     int _turn = 0;
 
     public static event Action OnEnd;
@@ -25,24 +24,22 @@ public class TurnManager : MonoBehaviour
         }
 
         ForceHideHands();
-        _playerHands[0].ShowHand(true);
-        // ForceDisableHands();
-        // _playerHands[0].EnableHand(true);
+        _players[0].Hand.ShowHand(true);
     }
 
-    public CardHand CurrentPlayerHand()
+    public Player CurrentPlayer()
     {
-        return _playerHands[_turn];
+        return _players[_turn];
     }
 
     public void ShowCurrentHand(bool state)
     {
-        _playerHands[_turn].ShowHand(state);
+        _players[_turn].Hand.ShowHand(state);
     }
 
     public void AdvanceTurn()
     {
-        if (_turn < _players - 1)
+        if (_turn < _players.Count - 1)
         {
             _turn++;
         }
@@ -52,28 +49,16 @@ public class TurnManager : MonoBehaviour
         }
 
         ForceHideHands();
-        _playerHands[_turn].ShowHand(true);
-        // ForceDisableHands();
-        // _playerHands[_turn].EnableHand(true);
+        _players[_turn].Hand.ShowHand(true);
     }
 
     void ForceHideHands()
     {
-        foreach(CardHand playerHand in _playerHands)
+        foreach(Player player in _players)
         {
-            playerHand.ShowHand(false);
+            player.Hand.ShowHand(false);
         }
     }
-    
-    /*
-    void ForceDisableHands()
-    {
-        foreach(CardHand playerHand in _playerHands)
-        {
-            playerHand.EnableHand(false);
-        }
-    }
-    */
 
     void EndGame()
     {
