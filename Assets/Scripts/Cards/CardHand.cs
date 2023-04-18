@@ -5,6 +5,7 @@ using UnityEngine;
 public class CardHand : MonoBehaviour
 {
     [SerializeField] GameObject _cardVisuals;
+    [SerializeField] GameObject _colorField;
     [SerializeField] Vector2 _distBetweenCards = new Vector2(125, 0);
     [SerializeField] GameObject _showButton;
     [SerializeField] GameObject _hideButton;
@@ -26,6 +27,7 @@ public class CardHand : MonoBehaviour
     public void ShowHand(bool state)
     {
         Shown = state;
+        _colorField.SetActive(state);
         foreach (CardObject card in Cards)
         {
             card.RenderData(state);
@@ -45,7 +47,7 @@ public class CardHand : MonoBehaviour
         RectTransform cardTransform = card.GetComponent<RectTransform>();
         cardTransform.SetParent(_cardVisuals.transform);
         cardTransform.localRotation = Quaternion.Euler(Vector3.zero);
-        cardTransform.anchoredPosition = _cardVisuals.GetComponent<RectTransform>().anchoredPosition + _distBetweenCards * (Cards.Count - 1);
+        cardTransform.anchoredPosition = _distBetweenCards * (Cards.Count - 1);
     }
 
     public void RemoveCard(CardObject card)

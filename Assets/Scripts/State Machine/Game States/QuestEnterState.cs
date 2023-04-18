@@ -12,19 +12,19 @@ public class QuestEnterState : State
     {
         _stateMachine = sm;
     }
-    
-    void OnQuestConfirmed()
+
+    void ReturnToPlayerTurn()
     {
         _stateMachine.ChangeState<TurnState>();
     }
     
     protected override void SubscribeToInput()
     {
-        //
+        QuestManager.OnClose += ReturnToPlayerTurn;
     }
 
     protected override void UnsubscribeToInput()
     {
-        //
+        QuestManager.OnClose -= ReturnToPlayerTurn;
     }
 }

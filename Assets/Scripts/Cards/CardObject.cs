@@ -54,9 +54,9 @@ public class CardObject : MonoBehaviour
 
     public void SendToHand()
     {
-        TurnManager.Instance.CurrentPlayerHand().AddCard(this);
+        TurnManager.Instance.CurrentPlayer().Hand.AddCard(this);
         Deck.Instance.EnableDraw(true);
-        RenderData(TurnManager.Instance.CurrentPlayerHand().Shown);
+        RenderData(TurnManager.Instance.CurrentPlayer().Hand.Shown);
         drawn = true;
         OnDraw?.Invoke(this);
     }
