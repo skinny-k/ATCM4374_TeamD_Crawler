@@ -2657,8 +2657,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cards:
+  - {fileID: 11400000, guid: d26d712f7e1d74e39be6ba4efb233488, type: 2}
+  - {fileID: 11400000, guid: d26d712f7e1d74e39be6ba4efb233488, type: 2}
+  - {fileID: 11400000, guid: 475a9e2f0ac7b4290950ee9706a4d5fc, type: 2}
+  - {fileID: 11400000, guid: 475a9e2f0ac7b4290950ee9706a4d5fc, type: 2}
   - {fileID: 11400000, guid: 4261b2edaf7ad44599681fc9b4435822, type: 2}
-  - {fileID: 11400000, guid: c3d580400e07c47dfba3792c2afc02ef, type: 2}
+  - {fileID: 11400000, guid: 4261b2edaf7ad44599681fc9b4435822, type: 2}
+  - {fileID: 11400000, guid: 8095ba6d98e8745a0b2d4b8d4a1d570d, type: 2}
+  - {fileID: 11400000, guid: 8095ba6d98e8745a0b2d4b8d4a1d570d, type: 2}
+  - {fileID: 11400000, guid: 6a3b8b1cf5b094b3983d21f8198c0cae, type: 2}
+  - {fileID: 11400000, guid: 6a3b8b1cf5b094b3983d21f8198c0cae, type: 2}
   _cardPrefab: {fileID: 2193770836781872973, guid: b2cfab4c682c440af85231487742f60d, type: 3}
 --- !u!1 &8702287063184529240
 GameObject:

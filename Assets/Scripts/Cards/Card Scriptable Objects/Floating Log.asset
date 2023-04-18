@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: de7d0c08de212448e898658ed880649a, type: 3}
-  m_Name: Boat
+  m_Name: Floating Log
   m_EditorClassIdentifier: 
-  _title: Boat
+  _title: Floating Log
   _description: You bypass a Pond obstacle without rolling.
