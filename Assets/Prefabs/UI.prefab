@@ -986,13 +986,13 @@ MonoBehaviour:
   _questEntryUI: {fileID: 3528725542209334866}
   NumEasyQuests: 4
   EasyQuestPoints: 1
-  EasyQuestButton: {fileID: 0}
-  NumMediumQuests: 4
+  EasyQuestButton: {fileID: 9171936304799514259}
+  NumMediumQuests: 2
   MediumQuestPoints: 2
-  MediumQuestButton: {fileID: 0}
-  NumHardQuests: 4
+  MediumQuestButton: {fileID: 1844737145349484552}
+  NumHardQuests: 1
   HardQuestPoints: 4
-  HardQuestButton: {fileID: 0}
+  HardQuestButton: {fileID: 436615331964954260}
 --- !u!1 &3528725542209334866
 GameObject:
   m_ObjectHideFlags: 0
