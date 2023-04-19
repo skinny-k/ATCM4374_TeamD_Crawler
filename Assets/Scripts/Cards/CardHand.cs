@@ -14,6 +14,10 @@ public class CardHand : MonoBehaviour
     public bool Shown { get; private set; } = false;
     public bool VisualsHidden { get; private set; } = false;
 
+    [SerializeField] protected AudioClip _CardPlaySound;
+    [SerializeField] protected AudioClip _addCardSound;
+    [SerializeField] protected AudioClip _showCardSound;
+
     void OnEnable()
     {
         CardObject.OnPlay += OnCardPlayed;
@@ -44,6 +48,8 @@ public class CardHand : MonoBehaviour
     {
         Cards.Add(card);
 
+        AddFeedback();
+
         RectTransform cardTransform = card.GetComponent<RectTransform>();
         cardTransform.SetParent(_cardVisuals.transform);
         cardTransform.localRotation = Quaternion.Euler(Vector3.zero);
@@ -60,6 +66,31 @@ public class CardHand : MonoBehaviour
         if (Cards.Contains(card))
         {
             RemoveCard(card);
+            PlayFeedback();
+        }
+    }
+
+    private void PlayFeedback()
+    {
+        if (_CardPlaySound != null)
+        {
+            AudioHelper.PlayClip2D(_CardPlaySound, 1f);
+        }
+    }
+
+    private void AddFeedback()
+    {
+        if (_addCardSound != null)
+        {
+            AudioHelper.PlayClip2D(_addCardSound, 1f);
+        }
+    }
+
+    private void ShowFeedback()
+    {
+        if (_showCardSound != null)
+        {
+            AudioHelper.PlayClip2D(_showCardSound, 1f);
         }
     }
 }

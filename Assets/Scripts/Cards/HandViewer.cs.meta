@@ -3,7 +3,10 @@ guid: d740887fa4ded4420af0f863b4efa0ef
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - _cardDisplayPrefab: {instanceID: 0}
+  - _scrollBody: {instanceID: 0}
+  - _ShowCardSound: {fileID: 8300000, guid: 6af277e8fe46b3d4681160f1d0385f4e, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

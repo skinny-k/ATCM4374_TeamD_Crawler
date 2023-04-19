@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Rigidbody))]
 public class GameDie : MonoBehaviour
@@ -25,8 +26,12 @@ public class GameDie : MonoBehaviour
     Vector3 _pausedVelocity;
     Vector3 _pausedAngularVelocity;
 
+    public int RandomNumber;
+    public Text DiceNumber;
+
     protected virtual void Start()
     {
+        RandomRoll();
         foreach (Transform child in transform)
         {
             DieFace face = child.GetComponent<DieFace>();
@@ -114,5 +119,11 @@ public class GameDie : MonoBehaviour
         _rb.velocity = _pausedVelocity;
         _rb.angularVelocity = _pausedAngularVelocity;
         _rb.isKinematic = false;
+    }
+
+    public void RandomRoll()
+    {
+        RandomNumber = Random.Range(1, 6);
+        DiceNumber.GetComponent<Text> ().text = "" + RandomNumber;
     }
 }
