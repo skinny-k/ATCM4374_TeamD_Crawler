@@ -29,9 +29,10 @@ public class GameDie : MonoBehaviour
     public int RandomNumber;
     public Text DiceNumber;
 
+    [SerializeField] protected AudioClip _DiceRollSound;
+
     protected virtual void Start()
     {
-        RandomRoll();
         foreach (Transform child in transform)
         {
             DieFace face = child.GetComponent<DieFace>();
@@ -123,7 +124,16 @@ public class GameDie : MonoBehaviour
 
     public void RandomRoll()
     {
-        RandomNumber = Random.Range(1, 6);
+        RandomNumber = Random.Range(1, 7);
         DiceNumber.GetComponent<Text> ().text = "" + RandomNumber;
+        DiceRollFeedback();
+    }
+
+    private void DiceRollFeedback()
+    {
+        if (_DiceRollSound != null)
+        {
+            AudioHelper.PlayClip2D(_DiceRollSound, 1f);
+        }
     }
 }
