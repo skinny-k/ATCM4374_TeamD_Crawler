@@ -22,6 +22,10 @@ public class QuestManager : MonoBehaviour
     public static event Action OnView;
     public static event Action OnClose;
 
+    [SerializeField] protected AudioClip _QuestButtonSound;
+    [SerializeField] protected AudioClip _QuestAddSound;
+    [SerializeField] protected AudioClip _CancelSound;
+
     void Start()
     {
         if (Instance == null)
@@ -38,6 +42,7 @@ public class QuestManager : MonoBehaviour
     {
         TurnManager.Instance.CurrentPlayer().Score.AddQuest(difficulty);
         EnableQuestEntry(false);
+        QuestAddFeedback();
     }
 
     public void DisableButton(string difficulty)
@@ -62,10 +67,27 @@ public class QuestManager : MonoBehaviour
         if (state)
         {
             OnView?.Invoke();
+            QuestButtonFeedback();
         }
         else
         {
             OnClose?.Invoke();
+        }
+    }
+
+    private void QuestButtonFeedback()
+    {
+        if (_QuestButtonSound != null)
+        {
+            AudioHelper.PlayClip2D(_QuestButtonSound, 1f);
+        }
+    }
+
+    private void QuestAddFeedback()
+    {
+        if (_QuestAddSound != null)
+        {
+            AudioHelper.PlayClip2D(_QuestAddSound, 1f);
         }
     }
 }

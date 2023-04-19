@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Rigidbody))]
 public class GameDie : MonoBehaviour
@@ -24,6 +25,11 @@ public class GameDie : MonoBehaviour
 
     Vector3 _pausedVelocity;
     Vector3 _pausedAngularVelocity;
+
+    public int RandomNumber;
+    public Text DiceNumber;
+
+    [SerializeField] protected AudioClip _DiceRollSound;
 
     protected virtual void Start()
     {
@@ -114,5 +120,20 @@ public class GameDie : MonoBehaviour
         _rb.velocity = _pausedVelocity;
         _rb.angularVelocity = _pausedAngularVelocity;
         _rb.isKinematic = false;
+    }
+
+    public void RandomRoll()
+    {
+        RandomNumber = Random.Range(1, 7);
+        DiceNumber.GetComponent<Text> ().text = "" + RandomNumber;
+        DiceRollFeedback();
+    }
+
+    private void DiceRollFeedback()
+    {
+        if (_DiceRollSound != null)
+        {
+            AudioHelper.PlayClip2D(_DiceRollSound, 1f);
+        }
     }
 }

@@ -12,6 +12,8 @@ public class TurnManager : MonoBehaviour
 
     public static event Action OnEnd;
 
+    [SerializeField] protected AudioClip _TurnChangeSound;
+
     void Start()
     {
         if (Instance == null)
@@ -42,10 +44,12 @@ public class TurnManager : MonoBehaviour
         if (_turn < _players.Count - 1)
         {
             _turn++;
+            TurnChangeFeedback();
         }
         else
         {
             _turn = 0;
+            TurnChangeFeedback();
         }
 
         ForceHideHands();
@@ -63,5 +67,13 @@ public class TurnManager : MonoBehaviour
     void EndGame()
     {
         OnEnd?.Invoke();
+    }
+
+    private void TurnChangeFeedback()
+    {
+        if (_TurnChangeSound != null)
+        {
+            AudioHelper.PlayClip2D(_TurnChangeSound, 1f);
+        }
     }
 }

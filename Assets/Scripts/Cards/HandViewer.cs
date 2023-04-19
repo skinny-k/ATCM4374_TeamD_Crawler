@@ -17,7 +17,7 @@ public class HandViewer : MonoBehaviour
     List<CardDisplay> _cardDisplays = new List<CardDisplay>();
     CardHand _currentHand;
     float _index = 0f;
-    
+
     void Start()
     {
         if (Instance == null)
