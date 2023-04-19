@@ -26,10 +26,10 @@ public class GameDie : MonoBehaviour
     Vector3 _pausedVelocity;
     Vector3 _pausedAngularVelocity;
 
-    public int RandomNumber;
-    public Text DiceNumber;
+    // public int RandomNumber;
+    // public Text DiceNumber;
 
-    [SerializeField] protected AudioClip _DiceRollSound;
+    // [SerializeField] protected AudioClip _DiceRollSound;
 
     protected virtual void Start()
     {
@@ -122,6 +122,7 @@ public class GameDie : MonoBehaviour
         _rb.isKinematic = false;
     }
 
+    /*
     public void RandomRoll()
     {
         RandomNumber = Random.Range(1, 7);
@@ -136,4 +137,5 @@ public class GameDie : MonoBehaviour
             AudioHelper.PlayClip2D(_DiceRollSound, 1f);
         }
     }
+    */
 }

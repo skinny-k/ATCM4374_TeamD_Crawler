@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HandViewer : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class HandViewer : MonoBehaviour
 
     [SerializeField] CardDisplay _cardDisplayPrefab;
     [SerializeField] RectTransform _scrollBody;
+    [SerializeField] Image _bg;
     [SerializeField] float _distanceBetweenCards = 500f;
     
     public static event Action OnView;
@@ -36,8 +38,14 @@ public class HandViewer : MonoBehaviour
         _currentHand = TurnManager.Instance.CurrentPlayer().Hand;
         _currentHand.EnableVisuals(false);
         _scrollBody.anchoredPosition = Vector2.zero;
+        
         DisplayCards();
-        transform.GetChild(0).gameObject.SetActive(true);
+
+        Color bgColor = _currentHand.GetComponent<Player>().PlayerColor;
+        bgColor.a = 0.5f;
+        _bg.color = bgColor;
+        _bg.gameObject.SetActive(true);
+        
         OnView?.Invoke();
     }
 
@@ -45,9 +53,11 @@ public class HandViewer : MonoBehaviour
     {
         _currentHand.EnableVisuals(true);
         _currentHand = null;
-        transform.GetChild(0).gameObject.SetActive(false);
+        _bg.gameObject.SetActive(false);
         _scrollBody.anchoredPosition = Vector2.zero;
+
         ClearDisplay();
+
         if (invokeClose)
         {
             OnClose?.Invoke();

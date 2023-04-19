@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CardHand : MonoBehaviour
 {
     [SerializeField] GameObject _cardVisuals;
-    [SerializeField] GameObject _colorField;
+    [SerializeField] Image _colorField;
     [SerializeField] Vector2 _distBetweenCards = new Vector2(125, 0);
     [SerializeField] GameObject _showButton;
     [SerializeField] GameObject _hideButton;
@@ -14,24 +15,28 @@ public class CardHand : MonoBehaviour
     public bool Shown { get; private set; } = false;
     public bool VisualsHidden { get; private set; } = false;
 
-    [SerializeField] protected AudioClip _CardPlaySound;
+    [SerializeField] protected AudioClip _cardPlaySound;
     [SerializeField] protected AudioClip _addCardSound;
     [SerializeField] protected AudioClip _showCardSound;
 
     void OnEnable()
     {
         CardObject.OnPlay += OnCardPlayed;
+        SingleCardViewer.OnView += OnCardViewOpened;
+        SingleCardViewer.OnClose += OnCardViewClosed;
     }
 
     void OnDisable()
     {
         CardObject.OnPlay -= OnCardPlayed;
+        SingleCardViewer.OnView -= OnCardViewOpened;
+        SingleCardViewer.OnClose -= OnCardViewClosed;
     }
     
     public void ShowHand(bool state)
     {
         Shown = state;
-        _colorField.SetActive(state);
+        _colorField.gameObject.SetActive(state);
         foreach (CardObject card in Cards)
         {
             card.RenderData(state);
@@ -42,6 +47,7 @@ public class CardHand : MonoBehaviour
     {
         VisualsHidden = state;
         _cardVisuals.SetActive(VisualsHidden);
+        _colorField.gameObject.SetActive(state);
     }
 
     public void AddCard(CardObject card)
@@ -60,7 +66,7 @@ public class CardHand : MonoBehaviour
     {
         Cards.Remove(card);
     }
-
+    
     public void OnCardPlayed(CardObject card)
     {
         if (Cards.Contains(card))
@@ -70,11 +76,29 @@ public class CardHand : MonoBehaviour
         }
     }
 
+    void OnCardViewOpened(CardObject card)
+    {
+        _colorField.gameObject.SetActive(false);
+    }
+
+    void OnCardViewClosed()
+    {
+        if (TurnManager.Instance.CurrentPlayer().Hand == this)
+        {
+            _colorField.gameObject.SetActive(true);
+        }
+    }
+
+    public void SetColorField(Color newColor)
+    {
+        _colorField.color = newColor;
+    }
+
     private void PlayFeedback()
     {
-        if (_CardPlaySound != null)
+        if (_cardPlaySound != null)
         {
-            AudioHelper.PlayClip2D(_CardPlaySound, 1f);
+            AudioHelper.PlayClip2D(_cardPlaySound, 1f);
         }
     }
 

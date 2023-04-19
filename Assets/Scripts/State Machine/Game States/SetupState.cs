@@ -13,16 +13,34 @@ public class SetupState : State
         _stateMachine = sm;
     }
     
-    public override void Tick()
+    public override void Enter()
     {
+        base.Enter();
+        
         if (_gameStarted)
         {
-            SceneManager.LoadScene(GameController.Instance.GameplaySceneName);
+            ReloadScene();
         }
-        else
-        {
-            _gameStarted = true;
-            _stateMachine.ChangeState<TurnState>();
-        }
+    }
+    
+    void EnterGameplay()
+    {
+        _gameStarted = true;
+        _stateMachine.ChangeState<TurnState>();
+    }
+    
+    public void ReloadScene()
+    {
+        SceneManager.LoadScene(GameController.Instance.GameplaySceneName);
+    }
+
+    protected override void SubscribeToInput()
+    {
+        QuestManager.OnSetupClose += EnterGameplay;
+    }
+
+    protected override void UnsubscribeToInput()
+    {
+        QuestManager.OnSetupClose -= EnterGameplay;
     }
 }

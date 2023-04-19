@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SingleCardViewer : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class SingleCardViewer : MonoBehaviour
 
     [SerializeField] CardDisplay _cardDisplay;
     [SerializeField] GameObject _confirmDrawButton;
+    [SerializeField] Image _bg;
     
     public static event Action<CardObject> OnView;
     public static event Action OnClose;
@@ -44,7 +46,12 @@ public class SingleCardViewer : MonoBehaviour
         _cardDisplay.SetCard(_currentCard);
         _cardDisplay.gameObject.SetActive(true);
         _confirmDrawButton.SetActive(true);
-        transform.GetChild(0).gameObject.SetActive(true);
+
+        Color bgColor = TurnManager.Instance.CurrentPlayer().PlayerColor;
+        bgColor.a = 0.5f;
+        _bg.color = bgColor;
+        _bg.gameObject.SetActive(true);
+
         OnView?.Invoke(_currentCard);
     }
 
@@ -60,7 +67,7 @@ public class SingleCardViewer : MonoBehaviour
         _currentCard.gameObject.SetActive(true);
         _cardDisplay.gameObject.SetActive(false);
         _confirmDrawButton.SetActive(false);
-        transform.GetChild(0).gameObject.SetActive(false);
+        _bg.gameObject.SetActive(false);
         _cardDisplay.SetCard(null);
         OnClose?.Invoke();
     }
