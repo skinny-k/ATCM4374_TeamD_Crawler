@@ -66,6 +66,8 @@ public class HandViewer : MonoBehaviour
 
     public void Scroll(Vector2 movement)
     {
+        Debug.Log("In HandViewer.Scroll()");
+        
         if (_scrollBody.anchoredPosition.x + movement.x > 0)
         {
             movement.x = _scrollBody.anchoredPosition.x;
