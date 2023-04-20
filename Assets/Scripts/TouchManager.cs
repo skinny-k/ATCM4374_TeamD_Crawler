@@ -6,6 +6,8 @@ using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
 
 public class TouchManager : MonoBehaviour
 {
+    public static TouchManager Instance;
+    
     [SerializeField] GameObject _debugSprite;
 
     Vector2 _lastPos = Vector2.zero;
@@ -32,6 +34,19 @@ public class TouchManager : MonoBehaviour
 
         TouchSimulation.Disable();
         EnhancedTouchSupport.Disable();
+    }
+
+    void Start()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     void FingerMove(Finger finger)

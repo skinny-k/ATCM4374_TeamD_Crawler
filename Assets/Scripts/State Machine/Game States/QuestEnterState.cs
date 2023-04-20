@@ -17,14 +17,21 @@ public class QuestEnterState : State
     {
         _stateMachine.ChangeState<TurnState>();
     }
+
+    void EndGame()
+    {
+        _stateMachine.ChangeState<EndState>();
+    }
     
     protected override void SubscribeToInput()
     {
         QuestManager.OnClose += ReturnToPlayerTurn;
+        QuestManager.OnAllQuestsComplete += EndGame;
     }
 
     protected override void UnsubscribeToInput()
     {
         QuestManager.OnClose -= ReturnToPlayerTurn;
+        QuestManager.OnAllQuestsComplete -= EndGame;
     }
 }

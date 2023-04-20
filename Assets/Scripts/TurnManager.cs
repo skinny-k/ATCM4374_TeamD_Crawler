@@ -7,7 +7,7 @@ public class TurnManager : MonoBehaviour
 {
     public static TurnManager Instance;
 
-    [SerializeField] List<Player> _players = new List<Player>();
+    [SerializeField] public List<Player> Players = new List<Player>();
     int _turn = 0;
 
     public static event Action OnEnd;
@@ -26,22 +26,22 @@ public class TurnManager : MonoBehaviour
         }
 
         ForceHideHands();
-        _players[0].Hand.ShowHand(true);
+        Players[0].Hand.ShowHand(true);
     }
 
     public Player CurrentPlayer()
     {
-        return _players[_turn];
+        return Players[_turn];
     }
 
     public void ShowCurrentHand(bool state)
     {
-        _players[_turn].Hand.ShowHand(state);
+        Players[_turn].Hand.ShowHand(state);
     }
 
     public void AdvanceTurn()
     {
-        if (_turn < _players.Count - 1)
+        if (_turn < Players.Count - 1)
         {
             _turn++;
             TurnChangeFeedback();
@@ -53,12 +53,12 @@ public class TurnManager : MonoBehaviour
         }
 
         ForceHideHands();
-        _players[_turn].Hand.ShowHand(true);
+        Players[_turn].Hand.ShowHand(true);
     }
 
     void ForceHideHands()
     {
-        foreach(Player player in _players)
+        foreach(Player player in Players)
         {
             player.Hand.ShowHand(false);
         }

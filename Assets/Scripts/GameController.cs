@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -20,5 +21,10 @@ public class GameController : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(_gameplaySceneName);
     }
 }

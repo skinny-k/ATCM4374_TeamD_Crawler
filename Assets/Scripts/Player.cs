@@ -7,13 +7,13 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public CardHand Hand { get; private set; }
-    public PlayerScore Score { get; private set; }
+    public PlayerScore ScoreKeeper { get; private set; }
     public Color PlayerColor = Color.black;
     
-    void Start()
+    void OnEnable()
     {
         Hand = GetComponent<CardHand>();
         Hand.SetColorField(PlayerColor);
-        Score = GetComponent<PlayerScore>();
+        ScoreKeeper = GetComponent<PlayerScore>();
     }
 }

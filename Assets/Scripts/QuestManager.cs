@@ -40,8 +40,10 @@ public class QuestManager : MonoBehaviour
     public static event Action OnSetupClose;
     public static event Action OnView;
     public static event Action OnClose;
+    public static event Action OnAllQuestsComplete;
 
     List<int> _questTiles = new List<int>();
+    bool _hasQuests = true;
 
     void Start()
     {
@@ -98,9 +100,13 @@ public class QuestManager : MonoBehaviour
 
     public void AddPlayerQuest(string difficulty)
     {
-        TurnManager.Instance.CurrentPlayer().Score.AddQuest(difficulty);
+        TurnManager.Instance.CurrentPlayer().ScoreKeeper.AddQuest(difficulty);
         EnableQuestEntry(false);
         QuestAddFeedback();
+        if (_hasQuests)
+        {
+            OnClose?.Invoke();
+        }
     }
 
     public void DisableButton(string difficulty)
@@ -117,6 +123,14 @@ public class QuestManager : MonoBehaviour
                 HardQuestButton.interactable = false;
                 break;
         }
+
+        if (EasyQuestButton.interactable == false &&
+            MediumQuestButton.interactable == false &&
+            HardQuestButton.interactable == false)
+        {
+            _hasQuests = false;
+            OnAllQuestsComplete?.Invoke();
+        }
     }
 
     public void EnableQuestEntry(bool state)
@@ -126,10 +140,6 @@ public class QuestManager : MonoBehaviour
         {
             OnView?.Invoke();
             QuestButtonFeedback();
-        }
-        else
-        {
-            OnClose?.Invoke();
         }
     }
 

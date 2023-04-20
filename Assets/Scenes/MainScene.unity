@@ -421,7 +421,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1255382247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1021,6 +1021,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 4702478382768692403, guid: 9f4ff993726d54a4796c9b5f867b866a, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4814912494930888771, guid: 9f4ff993726d54a4796c9b5f867b866a, type: 3}
       propertyPath: m_Color.b
       value: 0.26779994
@@ -1132,6 +1136,10 @@ PrefabInstance:
     - target: {fileID: 6718700955163965770, guid: 9f4ff993726d54a4796c9b5f867b866a, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 7273294812686675308, guid: 9f4ff993726d54a4796c9b5f867b866a, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7328145789203047754, guid: 9f4ff993726d54a4796c9b5f867b866a, type: 3}
       propertyPath: m_AnchoredPosition.x
