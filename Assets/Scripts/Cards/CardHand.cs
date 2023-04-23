@@ -8,12 +8,14 @@ public class CardHand : MonoBehaviour
     [SerializeField] GameObject _cardVisuals;
     [SerializeField] Image _colorField;
     [SerializeField] Vector2 _distBetweenCards = new Vector2(125, 0);
+    [SerializeField] Vector2 _scrollDirection = new Vector2(1, 0);
     [SerializeField] GameObject _showButton;
     [SerializeField] GameObject _hideButton;
 
     public List<CardObject> Cards = new List<CardObject>();
     public bool Shown { get; private set; } = false;
     public bool VisualsHidden { get; private set; } = false;
+    public Vector2 ScrollDirection => _scrollDirection;
 
     [SerializeField] protected AudioClip _cardPlaySound;
     [SerializeField] protected AudioClip _addCardSound;
