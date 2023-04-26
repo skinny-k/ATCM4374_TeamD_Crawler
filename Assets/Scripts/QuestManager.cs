@@ -103,10 +103,6 @@ public class QuestManager : MonoBehaviour
         TurnManager.Instance.CurrentPlayer().ScoreKeeper.AddQuest(difficulty);
         EnableQuestEntry(false);
         QuestAddFeedback();
-        if (_hasQuests)
-        {
-            OnClose?.Invoke();
-        }
     }
 
     public void DisableButton(string difficulty)
@@ -140,6 +136,10 @@ public class QuestManager : MonoBehaviour
         {
             OnView?.Invoke();
             QuestButtonFeedback();
+        }
+        else if (_hasQuests)
+        {
+            OnClose?.Invoke();
         }
     }
 

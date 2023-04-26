@@ -52,6 +52,8 @@ public class SingleCardViewer : MonoBehaviour
         _bg.color = bgColor;
         _bg.gameObject.SetActive(true);
 
+        GetComponent<RectTransform>().rotation = Quaternion.Euler(TurnManager.Instance.CurrentPlayer().CardViewRotation);
+
         OnView?.Invoke(_currentCard);
     }
 

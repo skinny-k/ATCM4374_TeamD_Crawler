@@ -6,6 +6,7 @@ public class GameSM : StateMachine
 {
     public SetupState Setup { get; private set; }
     public TurnState Turn { get; private set; }
+    public RulesState Rules { get; private set; }
     public DrawCardState DrawCard { get; private set; }
     public ViewHandState ViewHand { get; private set; }
     public QuestEnterState Quest { get; private set; }
@@ -17,6 +18,7 @@ public class GameSM : StateMachine
     {
         Setup = new SetupState(this); _states.Add(Setup);
         Turn = new TurnState(this); _states.Add(Turn);
+        Rules = new RulesState(this); _states.Add(Rules);
         DrawCard = new DrawCardState(this); _states.Add(DrawCard);
         ViewHand = new ViewHandState(this); _states.Add(ViewHand);
         Quest = new QuestEnterState(this); _states.Add(Quest);
