@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Wood Plank
   m_EditorClassIdentifier: 
   _title: Wood Plank
-  _description: You bypass a Ditch obstacle without rolling.
+  _description: 'I can cross the Obstacle by using this
+
+    Wood Plank!'

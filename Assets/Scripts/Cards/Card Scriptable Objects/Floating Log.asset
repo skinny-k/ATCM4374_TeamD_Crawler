@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Floating Log
   m_EditorClassIdentifier: 
   _title: Floating Log
-  _description: You bypass a Pond obstacle without rolling.
+  _description: "I can cross the Pond with this \nFloating Log!"

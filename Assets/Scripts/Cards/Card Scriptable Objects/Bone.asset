@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de7d0c08de212448e898658ed880649a, type: 3}
   m_Name: Bone
   m_EditorClassIdentifier: 
-  _title: Bone
-  _description: You bypass a Guard Dog obstacle without rolling.
+  _title: Live Squirrel
+  _description: 'I can distract the Guard Dog by releasing this
+
+    Squirrel!'

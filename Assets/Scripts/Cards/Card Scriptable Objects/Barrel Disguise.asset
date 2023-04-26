@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Barrel Disguise
   m_EditorClassIdentifier: 
   _title: Barrel Disguise
-  _description: You bypass a Pesky Human obstacle without rolling.
+  _description: 'I can sneak by the Pesky Human by using this
+
+    Barrell!'

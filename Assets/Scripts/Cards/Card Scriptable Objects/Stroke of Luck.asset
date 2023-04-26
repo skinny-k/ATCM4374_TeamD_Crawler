@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Stroke of Luck
   m_EditorClassIdentifier: 
   _title: Stroke of Luck
-  _description: You add 1 to a dice roll.
+  _description: 'Power boost!
+
+    I can move One (1) extra step!'
