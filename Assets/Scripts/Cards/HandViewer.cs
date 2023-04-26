@@ -42,9 +42,11 @@ public class HandViewer : MonoBehaviour
         DisplayCards();
 
         Color bgColor = _currentHand.GetComponent<Player>().PlayerColor;
-        bgColor.a = 0.5f;
+        bgColor.a = 0.75f;
         _bg.color = bgColor;
         _bg.gameObject.SetActive(true);
+
+        _scrollBody.GetComponent<RectTransform>().rotation = Quaternion.Euler(TurnManager.Instance.CurrentPlayer().CardViewRotation);
         
         OnView?.Invoke();
     }
@@ -54,6 +56,7 @@ public class HandViewer : MonoBehaviour
         _currentHand.EnableVisuals(true);
         _currentHand = null;
         _bg.gameObject.SetActive(false);
+
         _scrollBody.anchoredPosition = Vector2.zero;
 
         ClearDisplay();
@@ -66,19 +69,62 @@ public class HandViewer : MonoBehaviour
 
     public void Scroll(Vector2 movement)
     {
-        Debug.Log("In HandViewer.Scroll()");
-        
-        if (_scrollBody.anchoredPosition.x + movement.x > 0)
+        if (_currentHand.ScrollDirection == Vector2.right)
         {
-            movement.x = _scrollBody.anchoredPosition.x;
-        }
-        if (_scrollBody.anchoredPosition.x + movement.x < -_distanceBetweenCards * (_currentHand.Cards.Count - 1))
-        {
-            movement.x = -((-_distanceBetweenCards * (_currentHand.Cards.Count - 1)) - _scrollBody.anchoredPosition.x);
-        }
+            if (_scrollBody.anchoredPosition.x + movement.x > 0)
+            {
+                movement.x = _scrollBody.anchoredPosition.x;
+            }
+            if (_scrollBody.anchoredPosition.x + movement.x < -_distanceBetweenCards * (_currentHand.Cards.Count - 1))
+            {
+                movement.x = -((-_distanceBetweenCards * (_currentHand.Cards.Count - 1)) - _scrollBody.anchoredPosition.x);
+            }
 
-        _scrollBody.anchoredPosition += new Vector2(movement.x, 0);
-        _index += -movement.x / _distanceBetweenCards;
+            _scrollBody.anchoredPosition += new Vector2(movement.x, 0);
+            _index += -movement.x / _distanceBetweenCards;
+        }
+        if (_currentHand.ScrollDirection == Vector2.left)
+        {
+            if (_scrollBody.anchoredPosition.x + movement.x < 0)
+            {
+                movement.x = _scrollBody.anchoredPosition.x;
+            }
+            if (_scrollBody.anchoredPosition.x + movement.x > _distanceBetweenCards * (_currentHand.Cards.Count - 1))
+            {
+                movement.x = -((_distanceBetweenCards * (_currentHand.Cards.Count - 1)) - _scrollBody.anchoredPosition.x);
+            }
+
+            _scrollBody.anchoredPosition += new Vector2(movement.x, 0);
+            _index += movement.x / _distanceBetweenCards;
+        }
+        if (_currentHand.ScrollDirection == Vector2.up)
+        {
+            if (_scrollBody.anchoredPosition.y + movement.y > 0)
+            {
+                movement.y = _scrollBody.anchoredPosition.y;
+            }
+            if (_scrollBody.anchoredPosition.y + movement.y < -_distanceBetweenCards * (_currentHand.Cards.Count - 1))
+            {
+                movement.y = -((-_distanceBetweenCards * (_currentHand.Cards.Count - 1)) - _scrollBody.anchoredPosition.y);
+            }
+
+            _scrollBody.anchoredPosition += new Vector2(0, movement.y);
+            _index += -movement.y / _distanceBetweenCards;
+        }
+        if (_currentHand.ScrollDirection == Vector2.down)
+        {
+            if (_scrollBody.anchoredPosition.y + movement.y < 0)
+            {
+                movement.y = _scrollBody.anchoredPosition.y;
+            }
+            if (_scrollBody.anchoredPosition.y + movement.y > _distanceBetweenCards * (_currentHand.Cards.Count - 1))
+            {
+                movement.y = -((_distanceBetweenCards * (_currentHand.Cards.Count - 1)) - _scrollBody.anchoredPosition.y);
+            }
+
+            _scrollBody.anchoredPosition += new Vector2(0, movement.y);
+            _index += movement.y / _distanceBetweenCards;
+        }
 
         ResizeCards();
     }

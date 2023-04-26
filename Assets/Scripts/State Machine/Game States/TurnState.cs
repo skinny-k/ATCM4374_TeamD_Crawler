@@ -27,6 +27,11 @@ public class TurnState : State
         _stateMachine.ChangeState<QuestEnterState>();
     }
 
+    void OnRulesViewOpened()
+    {
+        _stateMachine.ChangeState<RulesState>();
+    }
+
     void OnGameEnded()
     {
         _stateMachine.ChangeState<EndState>();
@@ -34,6 +39,7 @@ public class TurnState : State
 
     protected override void SubscribeToInput()
     {
+        RulesManager.OnView += OnRulesViewOpened;
         QuestManager.OnView += OnQuestViewOpened;
         HandViewer.OnView += OnHandViewed;
         SingleCardViewer.OnView += OnCardDrawn;
@@ -42,6 +48,7 @@ public class TurnState : State
 
     protected override void UnsubscribeToInput()
     {
+        RulesManager.OnView -= OnRulesViewOpened;
         QuestManager.OnView -= OnQuestViewOpened;
         HandViewer.OnView -= OnHandViewed;
         SingleCardViewer.OnView -= OnCardDrawn;
