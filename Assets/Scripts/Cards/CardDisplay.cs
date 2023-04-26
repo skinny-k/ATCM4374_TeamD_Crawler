@@ -9,6 +9,7 @@ public class CardDisplay : MonoBehaviour
     [SerializeField] GameObject _visuals;
     [SerializeField] TMP_Text _title;
     [SerializeField] TMP_Text _description;
+    [SerializeField] TMP_Sprite _image;
     [SerializeField] Button _playButton;
     
     CardObject card;
@@ -37,6 +38,7 @@ public class CardDisplay : MonoBehaviour
             _visuals.SetActive(true);
             _title.text = card.CurrentCardData.Title;
             _description.text = card.CurrentCardData.Description;
+            _image.sprite = card.CurrentCardData.Image;
         }
         else
         {
