@@ -9,7 +9,7 @@ public class CardDisplay : MonoBehaviour
     [SerializeField] GameObject _visuals;
     [SerializeField] TMP_Text _title;
     [SerializeField] TMP_Text _description;
-    [SerializeField] TMP_Sprite _image;
+    [SerializeField] Image _image;
     [SerializeField] Button _playButton;
     
     CardObject card;

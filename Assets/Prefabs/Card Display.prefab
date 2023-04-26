@@ -468,21 +468,7 @@ MonoBehaviour:
   _visuals: {fileID: 8764003588920921722}
   _title: {fileID: 2763137278419140618}
   _description: {fileID: 4150002849979281112}
-  _image:
-    id: 0
-    x: 0
-    y: 0
-    width: 0
-    height: 0
-    xOffset: 0
-    yOffset: 0
-    xAdvance: 0
-    scale: 0
-    name: 
-    hashCode: 0
-    unicode: 0
-    pivot: {x: 0, y: 0}
-    sprite: {fileID: 0}
+  _image: {fileID: 4893667260576941106}
   _playButton: {fileID: 4682465882174955092}
 --- !u!1 &4173236041955959086
 GameObject:
