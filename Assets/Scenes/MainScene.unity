@@ -130,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1512732021674458802, guid: 9f4ff993726d54a4796c9b5f867b866a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3359023365981221902, guid: 9f4ff993726d54a4796c9b5f867b866a, type: 3}
       propertyPath: m_Name
       value: UI
@@ -178,8 +182,53 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7246065041731235639, guid: 9f4ff993726d54a4796c9b5f867b866a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 1512732021674458802, guid: 9f4ff993726d54a4796c9b5f867b866a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9f4ff993726d54a4796c9b5f867b866a, type: 3}
+--- !u!1 &473089322 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3309952346995598227, guid: 9f4ff993726d54a4796c9b5f867b866a, type: 3}
+  m_PrefabInstance: {fileID: 411689647}
+  m_PrefabAsset: {fileID: 0}
+--- !u!111 &473089328
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 473089322}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 4108c1ac12683274eb219294ce4540ef, type: 2}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
+--- !u!95 &473089329
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 473089322}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6d4601a05e965614e96e3cf2c8eadf60, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
