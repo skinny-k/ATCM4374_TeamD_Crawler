@@ -134,10 +134,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
-    - target: {fileID: 3630745773221242417, guid: 9f4ff993726d54a4796c9b5f867b866a, type: 3}
-      propertyPath: m_UiScaleMode
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5090565169093584097, guid: 9f4ff993726d54a4796c9b5f867b866a, type: 3}
       propertyPath: m_RootOrder
       value: 2

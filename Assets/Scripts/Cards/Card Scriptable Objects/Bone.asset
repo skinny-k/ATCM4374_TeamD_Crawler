@@ -16,3 +16,4 @@ MonoBehaviour:
   _description: 'I can distract the Guard Dog by releasing this
 
     Squirrel!'
+  _image: {fileID: 21300000, guid: 7c85db761cdbcbd44ab416d3a5c5562c, type: 3}
