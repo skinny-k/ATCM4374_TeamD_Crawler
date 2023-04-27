@@ -12,5 +12,7 @@ public class CardData : ScriptableObject
     public string Description => _description;
 
     [SerializeField] Sprite _image;
+    
     public Sprite Image => _image;
+   
 }

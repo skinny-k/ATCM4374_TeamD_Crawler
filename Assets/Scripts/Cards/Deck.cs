@@ -11,6 +11,7 @@ public class Deck : MonoBehaviour
     
     [SerializeField] List<CardData> _cards = new List<CardData>();
     [SerializeField] CardObject _cardPrefab;
+    [SerializeField] AudioClip _drawCardSFX;
 
     Queue<CardData> _deck = new Queue<CardData>();
 
@@ -37,6 +38,7 @@ public class Deck : MonoBehaviour
 
     public void DrawCard()
     {
+        AudioHelper.PlayClip2D(_drawCardSFX, 1);
         CardObject draw = Instantiate(_cardPrefab);
         draw.transform.SetParent(transform.parent);
         draw.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;

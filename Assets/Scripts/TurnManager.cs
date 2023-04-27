@@ -7,6 +7,7 @@ public class TurnManager : MonoBehaviour
 {
     public static TurnManager Instance;
 
+    [SerializeField] AudioClip _takeCardSFX;
     [SerializeField] public List<Player> Players = new List<Player>();
     int _turn = 0;
 
@@ -76,4 +77,11 @@ public class TurnManager : MonoBehaviour
             AudioHelper.PlayClip2D(_TurnChangeSound, 1f);
         }
     }
+
+    public void TakeCardSFX()
+    {
+        AudioHelper.PlayClip2D(_takeCardSFX, 1);
+    }
+
+   
 }

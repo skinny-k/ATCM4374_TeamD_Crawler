@@ -8,7 +8,15 @@ public class MainMenu : MonoBehaviour
     [SerializeField] float _delay = .5f;
     [SerializeField] AudioClip _startButtonSound;
     [SerializeField] AudioClip _quitButtonSound;
-        
+    [SerializeField] AudioClip _music;
+    [SerializeField] float _musicVolume = .05f;
+
+
+    private void Start()
+    {
+        MusicPlayer.Instance.PlayNewSong(_music,_musicVolume);
+    }
+
     public void StartButtonSound()
     {
         AudioHelper.PlayClip2D(_startButtonSound, 1);

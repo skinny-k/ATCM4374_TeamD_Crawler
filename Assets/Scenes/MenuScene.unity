@@ -938,6 +938,8 @@ MonoBehaviour:
   _delay: 0.5
   _startButtonSound: {fileID: 8300000, guid: 68d6c8fd159ef6646a274abeb9a4243c, type: 3}
   _quitButtonSound: {fileID: 8300000, guid: 598d2af1942680d47a5a45b78403cc2e, type: 3}
+  _music: {fileID: 8300000, guid: b0101ea9ed6b88c46b8b329f60f18697, type: 3}
+  _musicVolume: 0.05
 --- !u!111 &1387799162
 Animation:
   m_ObjectHideFlags: 0

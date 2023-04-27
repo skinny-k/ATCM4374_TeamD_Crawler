@@ -11,6 +11,7 @@ public class CardDisplay : MonoBehaviour
     [SerializeField] TMP_Text _description;
     [SerializeField] Image _image;
     [SerializeField] Button _playButton;
+    [SerializeField] AudioClip _playCardSFX;
     
     CardObject card;
     
@@ -28,6 +29,7 @@ public class CardDisplay : MonoBehaviour
 
     public void PlayCard()
     {
+        AudioHelper.PlayClip2D(_playCardSFX, 1);
         card.Play();
     }
 
