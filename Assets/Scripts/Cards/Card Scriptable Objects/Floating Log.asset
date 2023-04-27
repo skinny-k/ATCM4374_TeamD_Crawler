@@ -14,5 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _title: Floating Log
   _description: "I can cross the Pond with this \nFloating Log!"
-  _obstacle: {fileID: 21300000, guid: ed4300e69f24ee948831742c7ea4c628, type: 3}
-  _pickup: {fileID: 21300000, guid: 233cb1cbcaf18da42a5023d2d007a1f2, type: 3}
+  _image: {fileID: 21300000, guid: e3d8157315135c547a01c6d7d46c76ad, type: 3}

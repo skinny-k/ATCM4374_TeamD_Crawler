@@ -16,5 +16,4 @@ MonoBehaviour:
   _description: 'Power boost!
 
     I can move One (1) extra step!'
-  _obstacle: {fileID: 21300000, guid: caad2a9c860fc04459b38c2ede80237b, type: 3}
-  _pickup: {fileID: 21300000, guid: b34454afc2fd4d6429e659dfce9780f8, type: 3}
+  _image: {fileID: 21300000, guid: b34454afc2fd4d6429e659dfce9780f8, type: 3}

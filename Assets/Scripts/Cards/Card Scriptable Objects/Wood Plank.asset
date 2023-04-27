@@ -16,5 +16,4 @@ MonoBehaviour:
   _description: 'I can cross the Obstacle by using this
 
     Wood Plank!'
-  _obstacle: {fileID: 21300000, guid: 4bce170deb38c8642b8b4664adcfd4c2, type: 3}
-  _pickup: {fileID: 21300000, guid: 9b886c376016b9f429c9d8cb4d8595e7, type: 3}
+  _image: {fileID: 21300000, guid: 67cb791c95e449d4aa6084bd63a2891b, type: 3}
