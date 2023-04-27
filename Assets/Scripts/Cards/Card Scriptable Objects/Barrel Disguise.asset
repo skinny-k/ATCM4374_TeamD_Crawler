@@ -16,4 +16,5 @@ MonoBehaviour:
   _description: 'I can sneak by the Pesky Human by using this
 
     Barrell!'
-  _image: {fileID: 21300000, guid: 12c9a66e7fdce58498d6e7307788ea08, type: 3}
+  _obstacle: {fileID: 21300000, guid: abb36cfcc08de744db48d55a293ee986, type: 3}
+  _pickup: {fileID: 21300000, guid: 12c9a66e7fdce58498d6e7307788ea08, type: 3}
