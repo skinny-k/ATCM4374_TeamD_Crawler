@@ -11,6 +11,9 @@ public class CardData : ScriptableObject
     [MultilineAttribute][SerializeField] string _description = "Description";
     public string Description => _description;
 
-    [SerializeField] Sprite _image;
-    public Sprite Image => _image;
+    [SerializeField] Sprite _obstacle;
+    public Sprite Obstacle => _obstacle;
+
+    [SerializeField] Sprite _pickup;
+    public Sprite Pickup => _pickup;
 }
