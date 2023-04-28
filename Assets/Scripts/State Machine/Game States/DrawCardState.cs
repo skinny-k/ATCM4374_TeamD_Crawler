@@ -17,17 +17,20 @@ public class DrawCardState : State
     {
         Card = null;
         _stateMachine.ChangeState<TurnState>();
+        Deck.Instance.StartCoroutine(Deck.Instance.CheckPlayerHandSizeAfterDelay());
     }
     
     protected override void SubscribeToInput()
     {
-        SingleCardViewer.OnClose += OnViewExited;
-        // CardObject.OnDraw += OnCardDrawn;
+        TouchManager.OnFingerUp += OnViewExited;
+        TouchManager.OnFingerUp += SingleCardViewer.Instance.SendCardToHand;
+        TouchManager.OnFingerUp += SingleCardViewer.Instance.CloseView;
     }
 
     protected override void UnsubscribeToInput()
     {
-        SingleCardViewer.OnClose -= OnViewExited;
-        // CardObject.OnDraw += OnCardDrawn;
+        TouchManager.OnFingerUp -= OnViewExited;
+        TouchManager.OnFingerUp -= SingleCardViewer.Instance.SendCardToHand;
+        TouchManager.OnFingerUp -= SingleCardViewer.Instance.CloseView;
     }
 }

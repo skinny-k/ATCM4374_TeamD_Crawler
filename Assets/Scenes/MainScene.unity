@@ -130,9 +130,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1419664818910992174, guid: 9f4ff993726d54a4796c9b5f867b866a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1771032495691515862, guid: 9f4ff993726d54a4796c9b5f867b866a, type: 3}
+      propertyPath: m_Name
+      value: Confirm
+      objectReference: {fileID: 0}
     - target: {fileID: 3359023365981221902, guid: 9f4ff993726d54a4796c9b5f867b866a, type: 3}
       propertyPath: m_Name
       value: UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 3513989914350723322, guid: 9f4ff993726d54a4796c9b5f867b866a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5090565169093584097, guid: 9f4ff993726d54a4796c9b5f867b866a, type: 3}
       propertyPath: m_RootOrder
@@ -177,6 +189,18 @@ PrefabInstance:
     - target: {fileID: 5090565169093584097, guid: 9f4ff993726d54a4796c9b5f867b866a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6504825493032091395, guid: 9f4ff993726d54a4796c9b5f867b866a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6561156974930607932, guid: 9f4ff993726d54a4796c9b5f867b866a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7246065041731235639, guid: 9f4ff993726d54a4796c9b5f867b866a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f4ff993726d54a4796c9b5f867b866a, type: 3}
@@ -409,7 +433,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1255382246}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d604eb931bae64c1d821707452f5994a, type: 3}
   m_Name: 

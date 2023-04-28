@@ -9,7 +9,7 @@ public class SingleCardViewer : MonoBehaviour
     public static SingleCardViewer Instance;
 
     [SerializeField] CardDisplay _cardDisplay;
-    [SerializeField] GameObject _confirmDrawButton;
+    // [SerializeField] GameObject _confirmDrawButton;
     [SerializeField] Image _bg;
     
     public static event Action<CardObject> OnView;
@@ -45,7 +45,7 @@ public class SingleCardViewer : MonoBehaviour
         _currentCard.gameObject.SetActive(false);
         _cardDisplay.SetCard(_currentCard);
         _cardDisplay.gameObject.SetActive(true);
-        _confirmDrawButton.SetActive(true);
+        // _confirmDrawButton.SetActive(true);
 
         Color bgColor = TurnManager.Instance.CurrentPlayer().PlayerColor;
         bgColor.a = 0.5f;
@@ -68,7 +68,6 @@ public class SingleCardViewer : MonoBehaviour
     {
         _currentCard.gameObject.SetActive(true);
         _cardDisplay.gameObject.SetActive(false);
-        _confirmDrawButton.SetActive(false);
         _bg.gameObject.SetActive(false);
         _cardDisplay.SetCard(null);
         OnClose?.Invoke();
