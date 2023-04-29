@@ -59,6 +59,7 @@ public class TouchManager : MonoBehaviour
 
     void FingerDown(Finger finger)
     {
+        // Debug.Log("In TouchManager.OnFingerDown()");
         OnFingerDown?.Invoke(finger.screenPosition);
         _lastPos = finger.screenPosition;
 

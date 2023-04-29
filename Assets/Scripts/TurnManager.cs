@@ -54,6 +54,7 @@ public class TurnManager : MonoBehaviour
         }
 
         ForceHideHands();
+        Deck.Instance.CheckPlayerHandSize();
         Players[_turn].Hand.ShowHand(true);
     }
 

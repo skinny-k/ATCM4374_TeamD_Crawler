@@ -45,6 +45,7 @@ public class CardDisplay : MonoBehaviour
         else
         {
             _visuals.SetActive(false);
+            card = null;
         }
     }
 }

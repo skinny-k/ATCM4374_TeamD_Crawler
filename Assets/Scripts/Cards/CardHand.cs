@@ -12,6 +12,8 @@ public class CardHand : MonoBehaviour
     [SerializeField] GameObject _showButton;
     [SerializeField] GameObject _hideButton;
 
+    [SerializeField] int _maxHandSize = 3;
+    public int MaxHandSize => _maxHandSize;
     public List<CardObject> Cards = new List<CardObject>();
     public bool Shown { get; private set; } = false;
     public bool VisualsHidden { get; private set; } = false;

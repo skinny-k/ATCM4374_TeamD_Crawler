@@ -38,23 +38,54 @@ public class Deck : MonoBehaviour
 
     public void DrawCard()
     {
-        AudioHelper.PlayClip2D(_drawCardSFX, 1);
-        CardObject draw = Instantiate(_cardPrefab);
-        draw.transform.SetParent(transform.parent);
-        draw.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
-        draw.SetData(_deck.Dequeue());
-
-        EnableDraw(false);
-        if (_deck.Count <= 0)
+        if (TurnManager.Instance.CurrentPlayer().Hand.Cards.Count < TurnManager.Instance.CurrentPlayer().Hand.MaxHandSize)
         {
-            gameObject.SetActive(false);
-        }
+            CardObject draw = Instantiate(_cardPrefab);
+            draw.transform.SetParent(transform.parent);
+            draw.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+            draw.SetData(_deck.Dequeue());
 
-        OnDraw?.Invoke(draw);
+            EnableDraw(false);
+            if (_deck.Count <= 0)
+            {
+                gameObject.SetActive(false);
+            }
+
+            OnDraw?.Invoke(draw);
+        }
+        else
+        {
+            Debug.Log("Max hand size acheived! Cannot draw card.");
+        }
     }
 
     public void EnableDraw(bool state)
     {
-        GetComponent<Button>().enabled = state;
+        if (state)
+        {
+            CheckPlayerHandSize();
+        }
+        else
+        {
+            GetComponent<Button>().interactable = false;
+        }
+    }
+
+    public void CheckPlayerHandSize()
+    {
+        if (TurnManager.Instance.CurrentPlayer().Hand.Cards.Count >= TurnManager.Instance.CurrentPlayer().Hand.MaxHandSize)
+        {
+            GetComponent<Button>().interactable = false;
+        }
+        else
+        {
+            GetComponent<Button>().interactable = true;
+        }
+    }
+
+    public IEnumerator CheckPlayerHandSizeAfterDelay()
+    {
+        yield return new WaitForSeconds(0.05f);
+        CheckPlayerHandSize();
     }
 }
