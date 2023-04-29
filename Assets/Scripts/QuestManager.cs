@@ -15,6 +15,7 @@ public class QuestManager : MonoBehaviour
     [SerializeField] Button EasyQuestButton;
     [SerializeField] Button MediumQuestButton;
     [SerializeField] Button HardQuestButton;
+    [SerializeField] float _setupCloseDelay = 0.5f;
 
     [Header("Quest Settings")]
     [SerializeField] public int NumEasyQuests = 4;
@@ -74,7 +75,7 @@ public class QuestManager : MonoBehaviour
 
     public void CloseSetupUI()
     {
-        OnSetupClose?.Invoke();
+        OnSetupClose?.Invoke();        
     }
 
     string GenerateTilesAsString(int amount)
@@ -90,7 +91,7 @@ public class QuestManager : MonoBehaviour
                 result += tile;
                 if (i < amount - 1)
                 {
-                    result += ", ";
+                    result += "   ";
                 }
             }
         }
@@ -158,4 +159,5 @@ public class QuestManager : MonoBehaviour
             AudioHelper.PlayClip2D(_QuestAddSound, 1f);
         }
     }
+   
 }
