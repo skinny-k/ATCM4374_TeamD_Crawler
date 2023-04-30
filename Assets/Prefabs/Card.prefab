@@ -566,6 +566,7 @@ GameObject:
   - component: {fileID: 1781696794833717662}
   - component: {fileID: 2193770836781872973}
   - component: {fileID: 3482633421466757421}
+  - component: {fileID: 5624051592957356254}
   m_Layer: 5
   m_Name: Card
   m_TagString: Untagged
@@ -583,7 +584,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1396590616046064822}
   - {fileID: 4929974958307930967}
@@ -653,6 +654,7 @@ MonoBehaviour:
   _description: {fileID: 6658195485550516542}
   _face: {fileID: 6636964511052125896}
   _playButton: {fileID: 2668974282036095410}
+  _takeCardSFX: {fileID: 8300000, guid: 68d6c8fd159ef6646a274abeb9a4243c, type: 3}
 --- !u!114 &3482633421466757421
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -709,6 +711,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!111 &5624051592957356254
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6332349752919539929}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 20633d073c521b946819bd049ee4054b, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 20633d073c521b946819bd049ee4054b, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &6636964511052125896
 GameObject:
   m_ObjectHideFlags: 0

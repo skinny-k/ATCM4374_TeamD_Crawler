@@ -13,6 +13,7 @@ public class CardObject : MonoBehaviour
     [SerializeField] TMP_Text _description;
     [SerializeField] GameObject _face;
     [SerializeField] Button _playButton;
+    [SerializeField] AudioClip _takeCardSFX;
 
     bool drawn = false;
 
@@ -26,6 +27,7 @@ public class CardObject : MonoBehaviour
 
     public void OnTapped()
     {
+        AudioHelper.PlayClip2D(_takeCardSFX, 1);
         if (drawn)
         {
             HandViewer.Instance.ViewHand();
@@ -39,7 +41,7 @@ public class CardObject : MonoBehaviour
     }
     
     public void RenderData(bool state)
-    {
+    {      
         _title.text = "";
         _description.text = "";
         _face.SetActive(state);
@@ -54,6 +56,7 @@ public class CardObject : MonoBehaviour
 
     public void SendToHand()
     {
+        AudioHelper.PlayClip2D(_takeCardSFX, 1);
         TurnManager.Instance.CurrentPlayer().Hand.AddCard(this);
         RenderData(TurnManager.Instance.CurrentPlayer().Hand.Shown);
         drawn = true;

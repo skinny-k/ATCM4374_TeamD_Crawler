@@ -29,7 +29,7 @@ public class CardDisplay : MonoBehaviour
 
     public void PlayCard()
     {
-        AudioHelper.PlayClip2D(_playCardSFX, 1);
+        AudioHelper.PlayClip2D(_playCardSFX, .3f);
         card.Play();
     }
 
