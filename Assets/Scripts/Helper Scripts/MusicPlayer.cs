@@ -7,7 +7,8 @@ using UnityEngine.UI;
 
 public class MusicPlayer : SingletonMB<MusicPlayer>
 {    
-    AudioSource _music;         
+    private AudioSource _music;
+    private float _musicVolume = .1f;
 
     private void Awake()
     {
@@ -29,5 +30,15 @@ public class MusicPlayer : SingletonMB<MusicPlayer>
         }
         
     }
-   
+
+
+    private void Update()
+    {
+        _music.volume = _musicVolume;
+    }
+
+    public void UpdateMusicVolume(float volume)
+    {
+        _musicVolume = volume;
+    }
 }

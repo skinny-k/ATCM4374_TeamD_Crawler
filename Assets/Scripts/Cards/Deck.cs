@@ -12,8 +12,11 @@ public class Deck : MonoBehaviour
     [SerializeField] List<CardData> _cards = new List<CardData>();
     [SerializeField] CardObject _cardPrefab;
     [SerializeField] AudioClip _drawCardSFX;
+    [SerializeField] AudioClip _cancelDraw;
 
     Queue<CardData> _deck = new Queue<CardData>();
+
+    private float _delay = .5f;
 
     public static event Action<CardObject> OnDraw;
 
@@ -38,12 +41,18 @@ public class Deck : MonoBehaviour
 
     public void DrawCard()
     {
+        StartCoroutine(DrawWithDelay(_delay));
+    }
+
+    private IEnumerator DrawWithDelay(float delay)
+    {     
         if (TurnManager.Instance.CurrentPlayer().Hand.Cards.Count < TurnManager.Instance.CurrentPlayer().Hand.MaxHandSize)
         {
             CardObject draw = Instantiate(_cardPrefab);
             draw.transform.SetParent(transform.parent);
             draw.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
             draw.SetData(_deck.Dequeue());
+            draw.GetComponent<Animation>().Play();
 
             EnableDraw(false);
             if (_deck.Count <= 0)
@@ -51,6 +60,9 @@ public class Deck : MonoBehaviour
                 gameObject.SetActive(false);
             }
 
+            gameObject.GetComponent<Animation>().Play();
+
+            yield return new WaitForSeconds(delay);
             OnDraw?.Invoke(draw);
         }
         else
@@ -87,5 +99,15 @@ public class Deck : MonoBehaviour
     {
         yield return new WaitForSeconds(0.05f);
         CheckPlayerHandSize();
+    }
+
+    public void DrawConfirmSFX()
+    {
+        AudioHelper.PlayClip2D(_drawCardSFX, .5f);
+    }
+
+    public void CancelDrawFeedback()
+    {
+        AudioHelper.PlayClip2D(_cancelDraw, 2);
     }
 }

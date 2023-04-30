@@ -75,7 +75,7 @@ public class TurnManager : MonoBehaviour
     {
         if (_TurnChangeSound != null)
         {
-            AudioHelper.PlayClip2D(_TurnChangeSound, 1f);
+            AudioHelper.PlayClip2D(_TurnChangeSound, .3f);
         }
     }
 

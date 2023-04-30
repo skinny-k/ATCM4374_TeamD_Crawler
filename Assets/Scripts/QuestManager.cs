@@ -15,6 +15,7 @@ public class QuestManager : MonoBehaviour
     [SerializeField] Button EasyQuestButton;
     [SerializeField] Button MediumQuestButton;
     [SerializeField] Button HardQuestButton;
+    [SerializeField] float _setupCloseDelay = 0.5f;
 
     [Header("Quest Settings")]
     [SerializeField] public int NumEasyQuests = 4;
@@ -31,6 +32,7 @@ public class QuestManager : MonoBehaviour
     [SerializeField] TMP_Text _mediumQuestText;
     [SerializeField] TMP_Text _easyQuestText;
     [SerializeField] TMP_Text _questItemText;
+    [SerializeField] GameObject _setupUI;
 
     [Header("Feedback")]
     [SerializeField] protected AudioClip _QuestButtonSound;
@@ -70,10 +72,18 @@ public class QuestManager : MonoBehaviour
         _mediumQuestText.text = GenerateTilesAsString(NumMediumQuests);
         _easyQuestText.text = GenerateTilesAsString(NumEasyQuests);
         _questItemText.text = GenerateTilesAsString(NumQuestItems);
+    }       
+
+    public void CloseSetupWithDelay(float delay)
+    {
+        StartCoroutine(CloseSetup(delay));
     }
 
-    public void CloseSetupUI()
+    private IEnumerator CloseSetup(float delay)
     {
+        _setupUI.GetComponent<Animation>().Play();
+        yield return new WaitForSeconds(delay);
+        _setupUI.SetActive(false);
         OnSetupClose?.Invoke();
     }
 
@@ -90,7 +100,7 @@ public class QuestManager : MonoBehaviour
                 result += tile;
                 if (i < amount - 1)
                 {
-                    result += ", ";
+                    result += "   ";
                 }
             }
         }
@@ -147,7 +157,7 @@ public class QuestManager : MonoBehaviour
     {
         if (_QuestButtonSound != null)
         {
-            AudioHelper.PlayClip2D(_QuestButtonSound, 1f);
+            AudioHelper.PlayClip2D(_QuestButtonSound, .5f);
         }
     }
 
@@ -155,7 +165,13 @@ public class QuestManager : MonoBehaviour
     {
         if (_QuestAddSound != null)
         {
-            AudioHelper.PlayClip2D(_QuestAddSound, 1f);
+            AudioHelper.PlayClip2D(_QuestAddSound, .5f);
         }
     }
+
+    public void PlayCancenledSFX()
+    {
+        AudioHelper.PlayClip2D(_CancelSound, 2);
+    }
+   
 }
