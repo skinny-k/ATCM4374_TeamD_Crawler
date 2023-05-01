@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class OnButtonClick : MonoBehaviour
 {
@@ -23,5 +24,21 @@ public class OnButtonClick : MonoBehaviour
         _objectToBeClosed.GetComponent<Animation>().Play();
         yield return new WaitForSeconds(delay);
         _objectToBeClosed.SetActive(false);
+        _objectToBeClosed.transform.localScale = new Vector3(1, 1, 1);
+       
+    }
+
+    public void GoToMainMenu()
+    {
+        StartCoroutine(MainMenuWithDelay(_delay));
+    }
+
+    private IEnumerator MainMenuWithDelay(float delay)
+    {
+        _objectToBeClosed.GetComponent<Animation>().Play();
+        yield return new WaitForSeconds(delay);
+        _objectToBeClosed.SetActive(false);
+        _objectToBeClosed.transform.localScale = new Vector3(1, 1, 1);
+        SceneManager.LoadScene("MenuScene");
     }
 }

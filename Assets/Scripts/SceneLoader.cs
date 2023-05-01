@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
-    [SerializeField] float _delay = .5f;
+    [SerializeField] float _delay = 1;
 
     [SerializeField] AudioClip _mainMenuButtonSound;
 
