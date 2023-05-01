@@ -20,6 +20,7 @@ public class QuestEnterState : State
 
     void EndGame()
     {
+        _stateMachine.PlayGameEndSound();
         _stateMachine.ChangeState<EndState>();
     }
     

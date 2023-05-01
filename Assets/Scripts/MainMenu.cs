@@ -78,8 +78,8 @@ public class MainMenu : MonoBehaviour
 
     private IEnumerator OnOptionsButtonClick(float delay)
     {
+        StartButtonSound();
         _objectToBeOn.SetActive(true);
-
         _objectToBeOff.GetComponent<Animation>().Play();
         yield return new WaitForSeconds(delay);               
 

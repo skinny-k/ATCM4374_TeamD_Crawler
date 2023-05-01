@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class StateMachine : MonoBehaviour
 {
+    [SerializeField] AudioClip _gameEndSound;
+
     public State CurrentState { get; protected set; }
     public State PreviousState { get; protected set; }
     protected List<State> _states = new List<State>();
@@ -90,5 +92,10 @@ public class StateMachine : MonoBehaviour
         {
             ChangeState(PreviousState);
         }
+    }
+
+    public void PlayGameEndSound()
+    {
+        AudioHelper.PlayClip2D(_gameEndSound, 1);
     }
 }

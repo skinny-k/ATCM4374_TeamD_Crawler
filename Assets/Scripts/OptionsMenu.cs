@@ -20,6 +20,7 @@ public class OptionsMenu : MonoBehaviour
 
     private IEnumerator QuitOptionsWithDelay(float delay, GameObject on, GameObject off)
     {
+        AudioHelper.PlayClip2D(_backButtonSFX, 2);
         off.GetComponent<Animation>().Play();               
         yield return new WaitForSeconds(delay);
         on.SetActive(true);
@@ -29,7 +30,7 @@ public class OptionsMenu : MonoBehaviour
 
     public void BackButtonSound()
     {
-        AudioHelper.PlayClip2D(_backButtonSFX, 1);
+        
 
     }
 
